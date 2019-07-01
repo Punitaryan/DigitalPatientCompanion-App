@@ -1,0 +1,71 @@
+﻿<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<Style>
+        #patients {
+          font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #patients td, #patients th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #patients tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #patients tr:hover {background-color: #ddd;}
+        
+        #patients th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: rgb(86, 99, 211);
+          color: white;
+        }
+        .btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+        </Style>
+        </head>
+        <h1>My medical History</h1>
+        <div class="form-container">
+            <form method="post">
+                
+                                <table id="patients">
+                                        <tr>
+                                                <th>Test</th>
+                                                <th>Medical condition</th>
+                                                <th>Date</th>
+                                                <th>Summary</th>
+                                                <th>Test Reports</th>
+                                              </tr>
+                                        <tr>
+                                          <td>Sugar Test</td>
+                                          <td>Diabetic +ve</td>
+                                          <td>Date</td>
+                                          <td>{{vm.user.firstname}}</td>
+                                          <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
+                                        </tr>
+                                        <tr>
+                                          <td>Thyroid Test</td>
+                                          <td>Thyroid -ve</td>
+                                          <td>Date</td>
+                                          <td>{{vm.user.diagnosis}}</td>
+                                          <td><button class="btn"><i class="fa fa-download" style="height: 20px"></i> Download</button></td>
+                                        </tr>
+                                      </table>
+            </form>
+        </div>

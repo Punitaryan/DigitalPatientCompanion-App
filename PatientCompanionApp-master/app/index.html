@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+ 
+<head>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+h2{
+  margin:0px;
+  text-transform: uppercase;
+}
+
+h6{
+  margin:0px;
+  color:#777;
+}
+
+.wrapper{
+  text-align:center;
+  margin:5px auto;
+}
+
+.tabs{
+  margin-top:10px;
+  font-size:15px;
+  padding:0px;
+  list-style:none;
+  background:#fff;
+  box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+  display:inline-block;
+  border-radius:50px;
+  position:relative;
+  tab-size: 1000px;
+}
+
+.tabs a{
+  text-decoration:none;
+  color: #777;
+  text-transform:uppercase;
+  padding:10px 20px;
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  transition-duration:0.6s;
+}
+
+.tabs a.active{
+  color:rgb(65, 63, 63);
+}
+
+.tabs a i{
+  margin-right:5px;
+}
+
+.tabs .selector{
+  height:100%;
+  display:inline-block;
+  position:absolute;
+  left:0px;
+  top:0px;
+  z-index:1;
+  border-radius:100px;
+  transition-duration:0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  background: #8294e5;
+  background: -moz-linear-gradient(45deg, #8294e5 0%,#565db8 100%);
+  background: -webkit-linear-gradient(45deg, #8294e5 0%,#565db8 100%);
+  background: linear-gradient(45deg, #8294e5 0%,#565db8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='#8200f4',GradientType=1 );
+}
+    </style>
+    <meta charset="utf-8" />
+    <title>Digital Patient Companion</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="app-content/app.css" rel="stylesheet" />
+</head>
+<body class="container" onload="javascript:OnLoad()">
+    <script type="text/javascript">
+   function OnLoad()
+    {
+
+        var userName =localStorage["username"];
+ 
+      if(userName=='admin')
+      {
+      
+document.getElementById("admintab").style.display = "block";
+        //$("#admintab").show();
+       // $("#pateinttab").hide();
+      }
+      else
+      {
+        document.getElementById("pateinttab").style.display = "block";
+        //$("#admintab").hide();
+       // $("#pateinttab").show();
+      }
+    }
+      
+        </script>
+    <!-- header -->
+    <header >
+                  <div  id="pateinttab" class="patient" style="display:none;position:relative;top:50px;height:100px;size:80px;">
+                        <nav class="tabs"> 
+                          <div class="selector"></div>
+                          <a ui-sref="home" class="active">Home</a>
+                          <a ui-sref="account" class="active"></i>Account</a>
+                          <a ui-sref="medicalhistory" class="active"></i>Medical History</a>
+                          <a ui-sref="diagnosis" class="active"></i>Diagnosis</a>
+                          <a ui-sref="treatment" class="active"></i>Treatment</a>
+                        </nav>
+                  </div>
+                            <div id="admintab" class="admin" style=" display:none; position:relative;top:50px;height:100px;size:80px;">
+                                <nav class="tabs"> 
+                                  <div class="selector"></div>
+                                  <a ui-sref="home" class="active">Home</a>
+                                  <a ui-sref="account" class="active"></i>Account</a>
+                                  <a ui-sref="medicalhistory" class="active"></i>Patient Search</a>
+                                </nav>
+                              </div>
+        <div class="flash-message" ng-if="flash">
+            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        </div>
+        <div data-role="page" style="position:fixed;right:50px;top:50px;height:500px;size:200px;">
+                <div data-role="header">
+                        <div class="imgcontainer">                                
+                                <img src=".\images\patient.jpg" alt="Avatar" class="avatar" style="size:200px">
+                              </div>
+                    <label class="logoutLblPos">
+                        <a href="/login" target="_self" style="size:100px;align-content: center">Logout</a>
+                        </label>
+                    
+                </div>
+                </div>
+    </header>
+
+    <!-- main -->
+    <main ui-view></main>
+
+    <!-- footer -->
+    <footer></footer>
+
+    <!-- external scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+    <!-- application scripts -->
+    <script src="app.js"></script>
+    <script src="app-services/user.service.js"></script>
+    <script src="app-services/flash.service.js"></script>
+    <script src="home/index.controller.js"></script>
+    <script src="account/index.controller.js"></script>
+    <script src="diagnosis/index.controller.js"></script>
+    <script src="treatment/index.controller.js"></script>
+    <script src="medicalhistory/index.controller.js"></script>
+</body>
+</html>
